@@ -1,0 +1,14 @@
+athenax.master.uri: http://localhost:8083
+catalog.impl: com.uber.athenax.custom.TestClass
+clusters:
+  foo:
+    yarn.site.location: hdfs:///app/athenax/yarn-site.xml
+    athenax.home.dir: hdfs:///tmp/athenax
+    filnk.uber.jar.location: hdfs:///app/athenax/flink.jar
+    localize.resources:
+      - http://foo/log4j.properties
+    additional.jars:
+      - http://foo/connectors.jar
+      - http://foo/foo.jar
+extras:
+  foo: bar

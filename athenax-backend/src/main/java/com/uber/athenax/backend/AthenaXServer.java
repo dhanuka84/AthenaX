@@ -47,15 +47,21 @@ public class AthenaXServer {
   public static void main(String[] args) throws Exception {
     CommandLineParser parser = new DefaultParser();
     CommandLine line = parser.parse(CLI_OPTIONS, args);
-    if (!line.hasOption("conf")) {
+    /*if (!line.hasOption("conf")) {
       System.err.println("No configuration file is specified");
       HelpFormatter formatter = new HelpFormatter();
       formatter.printHelp("athenax-server", CLI_OPTIONS);
       System.exit(1);
     }
-
+*/
+    if(args == null || args.length == 0){
+    	System.err.println("No configuration file is specified");
+    	System.exit(1);
+    }
+    
     try {
-      String confFile = line.getOptionValue("conf");
+      /*String confFile = line.getOptionValue("conf");*/
+    	String confFile = args[0];
       AthenaXConfiguration conf = AthenaXConfiguration.load(Paths.get(confFile).toFile());
       new AthenaXServer().start(conf);
     } catch (IOException | ClassNotFoundException e) {
